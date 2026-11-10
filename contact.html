@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 - 服务器压力测试任务编排调度软件</title>
+  <meta name="description" content="联系上海塔伸科技有限公司：申请30天免费试用、咨询压测解决方案、商务合作与售后支持。">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css?v=1.1">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo.png" alt="塔伸科技"> <span class="brand-text"><span class="brand-sub">服务器压力测试任务编排调度软件</span>
+        </span>
+      </a>
+      <button class="burger" aria-label="打开菜单"><span></span><span></span><span></span></button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="product.html">产品功能</a></li>
+          <li><a href="solutions.html">解决方案</a></li>
+          <li><a href="pricing.html">定价与购买</a></li>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="contact.html">联系我们</a></li>
+          <li><a class="nav-cta" href="order.html">立即下单</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>联系我们</h1>
+      <p>申请试用、咨询方案或商务合作，请留言或直接致电，我们会在 1 个工作日内回复。</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:52px;">
+    <div class="container contact-grid">
+
+      <div class="form-card">
+        <h2 style="font-size:21px;margin-bottom:22px;">在线留言</h2>
+        <!--
+          演示说明：此表单当前仅做前端演示，不会真实提交。
+          上线时有两种低成本方案：
+          1. 使用 form 的 action 指向您在阿里云/腾讯云购买的表单通知服务；
+          2. 增加简单后端接收留言并发送邮件通知（参见 README.md）。
+        -->
+        <form class="form-grid" id="contact-form">
+          <div class="form-field">
+            <label for="c-name">您的姓名 <em>*</em></label>
+            <input type="text" id="c-name" placeholder="怎么称呼您">
+            <span class="err"></span>
+          </div>
+          <div class="form-field">
+            <label for="c-company">公司名称</label>
+            <input type="text" id="c-company" placeholder="选填">
+          </div>
+          <div class="form-field">
+            <label for="c-phone">手机号 <em>*</em></label>
+            <input type="tel" id="c-phone" maxlength="11" placeholder="便于我们与您联系">
+            <span class="err"></span>
+          </div>
+          <div class="form-field">
+            <label for="c-type">咨询类型</label>
+            <select id="c-type">
+              <option>申请免费试用</option>
+              <option>产品功能咨询</option>
+              <option>解决方案咨询</option>
+              <option>报价与商务合作</option>
+              <option>售后技术支持</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="c-msg">留言内容 <em>*</em></label>
+            <textarea id="c-msg" rows="5" placeholder="请简单描述您的业务场景或遇到的问题，例如：电商平台，希望在大促前对下单链路做容量评估"></textarea>
+            <span class="err"></span>
+          </div>
+          <div class="form-field full">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">提交留言</button>
+          </div>
+        </form>
+        <div class="notice blue" id="contact-ok" style="display:none;">
+          ✅ 留言提交成功（演示）！正式上线后，留言将通过后端发送至商务邮箱，顾问会在 1 个工作日内与您联系。
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h2 style="font-size:21px;margin-bottom:12px;">联系方式</h2>
+        <div class="contact-item">
+          <span class="ci-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+          </span>
+          <div>
+            <div class="ci-t">商务热线</div>
+            <div class="ci-v">18501750936<br>工作日 9:00–18:00</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          </span>
+          <div>
+            <div class="ci-t">商务邮箱</div>
+            <div class="ci-v">1562779519@qq.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div>
+            <div class="ci-t">公司地址</div>
+            <div class="ci-v">上海市徐汇区零陵路583号9楼</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <div>
+            <div class="ci-t">支持响应</div>
+            <div class="ci-v">工单：工作日 24 小时内回复<br>专属群：专业版及以上即时响应</div>
+          </div>
+        </div>
+        <div class="notice" style="margin-top:18px;">
+          提示：电话、邮箱与地址已更新为真实信息；对公转账的银行账户仍为占位，正式收款前请替换（见 README 清单）。
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-brand brand">
+            <img class="brand-logo" src="assets/logo.png" alt="塔伸科技"> <span class="brand-text"><span class="brand-sub">上海塔伸科技有限公司</span>
+            </span>
+          </div>
+          <p>塔伸科技专注于服务器性能测试领域，自主研发的压力测试任务编排调度软件服务于电商、金融、游戏、政企等多行业客户，帮助企业以更低成本完成专业级容量评估与稳定性验证。</p>
+          <div class="compliance">
+            <b>合规声明：</b>本软件仅供对自有或已获得合法授权的系统进行性能测试使用，严禁将本软件用于任何未经授权的系统。使用本软件产生的一切行为由使用者自行承担法律责任。
+          </div>
+        </div>
+        <div>
+          <h4>产品</h4>
+          <ul>
+            <li><a href="product.html">功能总览</a></li>
+            <li><a href="product.html#orchestrate">任务编排</a></li>
+            <li><a href="product.html#schedule">调度引擎</a></li>
+            <li><a href="product.html#monitor">监控与报告</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>购买与支持</h4>
+          <ul>
+            <li><a href="pricing.html">定价方案</a></li>
+            <li><a href="order.html">在线下单</a></li>
+            <li><a href="contact.html">申请试用</a></li>
+            <li><a href="contact.html">联系商务</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>联系方式</h4>
+          <ul>
+            <li>地址：上海市徐汇区零陵路583号9楼</li>
+            <li>电话：18501750936</li>
+            <li>邮箱：1562779519@qq.com</li>
+            <li>工作时间：周一至周五 9:00–18:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footer-year">2026</span> 上海塔伸科技有限公司 版权所有</span>
+        <span><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备XXXXXXXX号-X（备案通过后请替换）</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1.1"></script>
+  <script>
+    // 联系表单演示校验与提示（真实提交请接入后端或表单服务）
+    (function () {
+      var form = document.getElementById('contact-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var ok = true;
+        function check(id, test, msg) {
+          var input = document.getElementById(id);
+          var field = input.closest('.form-field');
+          var err = field.querySelector('.err');
+          if (!test(input.value.trim())) { ok = false; field.classList.add('invalid'); err.textContent = msg; }
+          else { field.classList.remove('invalid'); }
+        }
+        check('c-name', function (v) { return v.length >= 2; }, '请填写您的姓名');
+        check('c-phone', function (v) { return /^1[3-9]\d{9}$/.test(v); }, '请填写正确的 11 位手机号');
+        check('c-msg', function (v) { return v.length >= 10; }, '请至少输入 10 个字的问题描述');
+        if (ok) {
+          form.style.display = 'none';
+          document.getElementById('contact-ok').style.display = '';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

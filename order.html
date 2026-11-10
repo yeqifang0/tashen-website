@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线下单 - 服务器压力测试任务编排调度软件</title>
+  <meta name="description" content="在线下单购买服务器压力测试任务编排调度软件：选择套餐、填写信息、微信/支付宝/对公转账支付，商务顾问 1 个工作日内联系确认合同与交付。">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css?v=1.1">
+</head>
+<body id="order-page">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo.png" alt="塔伸科技"> <span class="brand-text"><span class="brand-sub">服务器压力测试任务编排调度软件</span>
+        </span>
+      </a>
+      <button class="burger" aria-label="打开菜单"><span></span><span></span><span></span></button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="product.html">产品功能</a></li>
+          <li><a href="solutions.html">解决方案</a></li>
+          <li><a href="pricing.html">定价与购买</a></li>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="contact.html">联系我们</a></li>
+          <li><a class="nav-cta" href="order.html">立即下单</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>在线下单</h1>
+      <p>三步完成订购：选择套餐 → 填写信息 → 支付。下单后商务顾问将在 1 个工作日内与您联系合同、发票与交付事宜。</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:20px;">
+    <div class="container" style="max-width:900px;">
+
+      <!-- 步骤指示器 -->
+      <div class="order-steps" id="order-steps">
+        <div class="o-step active" id="ostep-1"><span class="o-ind">1</span><span class="o-lab">选择套餐</span><span class="o-line"></span></div>
+        <div class="o-step" id="ostep-2"><span class="o-ind">2</span><span class="o-lab">填写信息</span><span class="o-line"></span></div>
+        <div class="o-step" id="ostep-3"><span class="o-ind">3</span><span class="o-lab">支付下单</span></div>
+      </div>
+
+      <!-- 步骤1：选择套餐 -->
+      <div class="form-card" id="panel-1">
+        <h2 style="font-size:21px;margin-bottom:8px;">请选择您需要的套餐</h2>
+        <p style="color:var(--ink-3);font-size:14px;margin-bottom:22px;">如需帮助选型，可参考<a href="pricing.html">版本对比</a>或联系商务顾问。</p>
+        <div class="plan-pick four">
+          <div class="plan-option" data-plan="standard">
+            <div class="p-name">标准版</div>
+            <div class="p-desc">中小型技术团队</div>
+            <div class="p-price">¥19,800<small>／年</small></div>
+          </div>
+          <div class="plan-option" data-plan="professional">
+            <div class="p-name">专业版</div>
+            <div class="p-desc">中大型业务系统</div>
+            <div class="p-price">¥49,800<small>／年</small></div>
+          </div>
+          <div class="plan-option" data-plan="enterprise">
+            <div class="p-name">企业版</div>
+            <div class="p-desc">私有化部署 · 不限节点</div>
+            <div class="p-price">¥98,800<small>／年起</small></div>
+          </div>
+          <div class="plan-option" data-plan="service">
+            <div class="p-name">专家代测服务</div>
+            <div class="p-desc">专家团队按次代测</div>
+            <div class="p-price">¥6,000<small>／次起</small></div>
+          </div>
+        </div>
+        <div class="notice blue">💡 企业版与代测服务的最终价格以商务评估为准，此处金额为起步参考价，下单后可与顾问确认调整。</div>
+        <div class="wizard-actions">
+          <span></span>
+          <button class="btn btn-primary btn-lg" id="next-1">下一步：填写信息</button>
+        </div>
+      </div>
+
+      <!-- 步骤2：填写联系信息 -->
+      <div class="form-card" id="panel-2" style="display:none;">
+        <h2 style="font-size:21px;margin-bottom:22px;">联系与开票信息</h2>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="f-company">公司全称 <em>*</em></label>
+            <input type="text" id="f-company" placeholder="如：上海××科技有限公司">
+            <span class="err"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-name">联系人 <em>*</em></label>
+            <input type="text" id="f-name" placeholder="您的姓名">
+            <span class="err"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-phone">手机号 <em>*</em></label>
+            <input type="tel" id="f-phone" maxlength="11" placeholder="用于商务顾问与您联系">
+            <span class="err"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-email">电子邮箱 <em>*</em></label>
+            <input type="email" id="f-email" placeholder="用于接收合同与交付通知">
+            <span class="err"></span>
+          </div>
+          <div class="form-field full">
+            <label for="f-note">需求备注（选填）</label>
+            <textarea id="f-note" rows="3" placeholder="例如：预计压测的系统类型、期望开通时间、是否需要私有化部署等"></textarea>
+          </div>
+        </div>
+        <div class="wizard-actions">
+          <button class="btn btn-outline" id="back-2">上一步</button>
+          <button class="btn btn-primary btn-lg" id="next-2">下一步：选择支付方式</button>
+        </div>
+      </div>
+
+      <!-- 步骤3：支付 -->
+      <div class="form-card" id="panel-3" style="display:none;">
+        <h2 style="font-size:21px;margin-bottom:22px;">确认订单并支付</h2>
+
+        <div class="order-summary" style="margin-bottom:22px;">
+          <dl>
+            <dt>订购套餐</dt><dd id="summary-plan">—</dd>
+            <dt>订单金额</dt><dd id="summary-amount" style="color:var(--accent);font-size:20px;">—</dd>
+          </dl>
+        </div>
+
+        <h3 style="font-size:16px;margin-bottom:14px;">选择支付方式</h3>
+        <div class="pay-methods">
+          <div class="pay-option selected" data-pay="wxpay">
+            <span class="pay-ico wx">微信</span>
+            <span><span class="pay-name">微信支付</span><br><span class="pay-desc">扫码支付，即时到账</span></span>
+          </div>
+          <div class="pay-option" data-pay="alipay">
+            <span class="pay-ico ali">支付宝</span>
+            <span><span class="pay-name">支付宝</span><br><span class="pay-desc">扫码支付，即时到账</span></span>
+          </div>
+          <div class="pay-option" data-pay="bank">
+            <span class="pay-ico bank">转账</span>
+            <span><span class="pay-name">对公转账</span><br><span class="pay-desc">适合企业采购与报销</span></span>
+          </div>
+        </div>
+
+        <!-- 支付详情（二维码占位 / 银行信息），由 order.js 渲染 -->
+        <div class="pay-detail" id="pay-detail"></div>
+
+        <div class="notice">提交订单即表示您已阅读并同意《软件许可与技术服务协议》（上线后可附链接），我们将在支付确认后为您安排开通与交付。</div>
+
+        <div class="wizard-actions">
+          <button class="btn btn-outline" id="back-3">上一步</button>
+          <button class="btn btn-accent btn-lg" id="submit-order">提交订单</button>
+        </div>
+      </div>
+
+      <!-- 步骤4：下单结果，由 order.js 渲染 -->
+      <div id="panel-result" style="display:none;"></div>
+
+    </div>
+  </section>
+
+  <!-- 订单查询（演示） -->
+  <section class="section section-alt" style="padding-top:56px;">
+    <div class="container" style="max-width:760px;text-align:center;">
+      <h2 style="font-size:22px;margin-bottom:10px;">订单查询</h2>
+      <p style="color:var(--ink-2);font-size:14.5px;margin-bottom:22px;">输入下单时生成的订单编号，查询订单状态（演示环境订单保存在当前浏览器）。</p>
+      <div class="query-box">
+        <input type="text" id="order-query-input" class="form-field" placeholder="如：TS202611091030-1234" style="padding:11px 14px;border:1px solid var(--line);border-radius:9px;font-size:15px;">
+        <button class="btn btn-primary" id="order-query-btn">查询</button>
+      </div>
+      <div id="order-query-result"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-brand brand">
+            <img class="brand-logo" src="assets/logo.png" alt="塔伸科技"> <span class="brand-text"><span class="brand-sub">上海塔伸科技有限公司</span>
+            </span>
+          </div>
+          <p>塔伸科技专注于服务器性能测试领域，自主研发的压力测试任务编排调度软件服务于电商、金融、游戏、政企等多行业客户，帮助企业以更低成本完成专业级容量评估与稳定性验证。</p>
+          <div class="compliance">
+            <b>合规声明：</b>本软件仅供对自有或已获得合法授权的系统进行性能测试使用，严禁将本软件用于任何未经授权的系统。使用本软件产生的一切行为由使用者自行承担法律责任。
+          </div>
+        </div>
+        <div>
+          <h4>产品</h4>
+          <ul>
+            <li><a href="product.html">功能总览</a></li>
+            <li><a href="product.html#orchestrate">任务编排</a></li>
+            <li><a href="product.html#schedule">调度引擎</a></li>
+            <li><a href="product.html#monitor">监控与报告</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>购买与支持</h4>
+          <ul>
+            <li><a href="pricing.html">定价方案</a></li>
+            <li><a href="order.html">在线下单</a></li>
+            <li><a href="contact.html">申请试用</a></li>
+            <li><a href="contact.html">联系商务</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>联系方式</h4>
+          <ul>
+            <li>地址：上海市徐汇区零陵路583号9楼</li>
+            <li>电话：18501750936</li>
+            <li>邮箱：1562779519@qq.com</li>
+            <li>工作时间：周一至周五 9:00–18:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footer-year">2026</span> 上海塔伸科技有限公司 版权所有</span>
+        <span><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备XXXXXXXX号-X（备案通过后请替换）</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1.1"></script>
+  <script src="js/order.js?v=1.1"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品功能 - 服务器压力测试任务编排调度软件</title>
+  <meta name="description" content="可视化任务编排、智能调度引擎、分布式施压集群、多协议压测、实时监控告警与自动化测试报告，六大模块构成的服务器压力测试任务编排调度软件。">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css?v=1.1">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo.png" alt="塔伸科技"> <span class="brand-text"><span class="brand-sub">服务器压力测试任务编排调度软件</span>
+        </span>
+      </a>
+      <button class="burger" aria-label="打开菜单"><span></span><span></span><span></span></button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="product.html">产品功能</a></li>
+          <li><a href="solutions.html">解决方案</a></li>
+          <li><a href="pricing.html">定价与购买</a></li>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="contact.html">联系我们</a></li>
+          <li><a class="nav-cta" href="order.html">立即下单</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>产品功能</h1>
+      <p>六大核心模块覆盖压测任务全生命周期：从场景编排、任务调度、集群执行，到监控告警与报告分析。</p>
+    </div>
+  </section>
+
+  <!-- 模块一：任务编排 -->
+  <section class="section" id="orchestrate">
+    <div class="container split">
+      <div>
+        <span class="kicker">模块一</span>
+        <h2>可视化任务编排</h2>
+        <p>像画流程图一样搭建压测场景。测试人员无需编写调度代码，即可将登录、浏览、下单、支付等多个业务步骤编排为一个完整链路，并定义每一步的加压策略与数据依赖。</p>
+        <ul class="check-list">
+          <li>拖拽式画布编排，步骤级配置并发数、爬坡时长与持续时间</li>
+          <li>支持串行、并行、条件分支等多种执行拓扑</li>
+          <li>CSV/参数化数据文件绑定，支持自定义变量与函数</li>
+          <li>前置/后置脚本（断言、数据加工、环境准备与清理）</li>
+          <li>场景模板库：一键复用常见业务链路模板</li>
+          <li>脚本版本管理，任意两个版本之间可快速回滚</li>
+        </ul>
+      </div>
+      <div class="grid-2">
+        <div class="card"><h3>场景画布</h3><p>所见即所得的链路编排视图，整体拓扑一目了然，支持画布缩放与步骤定位。</p></div>
+        <div class="card"><h3>数据工厂</h3><p>参数化数据导入、变量管理与测试数据构造工具，解决压测数据准备难题。</p></div>
+        <div class="card"><h3>模板与复用</h3><p>沉淀团队场景模板，新人也能快速搭出标准化压测链路。</p></div>
+        <div class="card"><h3>版本管理</h3><p>场景脚本纳入版本体系，压测结果与脚本版本双向可追溯。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 模块二：调度引擎 -->
+  <section class="section section-alt" id="schedule">
+    <div class="container split">
+      <div>
+        <span class="kicker">模块二</span>
+        <h2>智能调度引擎</h2>
+        <p>调度引擎是整个平台的"大脑"，负责把编排好的压测任务在合适的时间、分发给合适的施压节点执行，并在任务失败时按策略自动处理。</p>
+        <ul class="check-list">
+          <li>定时调度与周期调度：支持 Cron 表达式，预约夜间压测时段</li>
+          <li>资源自动分配：按任务并发需求自动匹配施压节点，避免资源争抢</li>
+          <li>任务优先级与执行队列：大促保障任务优先执行</li>
+          <li>失败重试与断点续跑：节点异常自动迁移任务，减少重头再来</li>
+          <li>配额与审批：压测任务可配置审批流，防止误压生产环境</li>
+          <li>执行日历：全局视角查看历史与未来的任务排期</li>
+        </ul>
+      </div>
+      <div class="grid-2">
+        <div class="card"><h3>定时/周期调度</h3><p>预约执行、周期回归，让容量巡检成为常态化机制。</p></div>
+        <div class="card"><h3>智能资源分配</h3><p>节点负载感知的任务分发策略，让施压集群利用率最大化。</p></div>
+        <div class="card"><h3>高可靠执行</h3><p>失败重试、节点故障迁移与断点续跑，保障长时压测稳定完成。</p></div>
+        <div class="card"><h3>安全审批</h3><p>压测任务审批与配额管控，生产环境压测更安心。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 模块三：执行与施压 -->
+  <section class="section" id="execute">
+    <div class="container split">
+      <div>
+        <span class="kicker">模块三</span>
+        <h2>分布式施压与多协议执行</h2>
+        <p>施压集群采用分布式架构，单集群可纳管上百台施压节点；执行层支持主流协议与中间件，覆盖从互联网接口到后台数据体系的完整压测需求。</p>
+        <ul class="check-list">
+          <li>HTTP/HTTPS、WebSocket、TCP/UDP 自定义协议压测</li>
+          <li>gRPC、Dubbo 等微服务框架直连压测</li>
+          <li>JDBC 直连数据库压测，主流关系型与国产数据库适配</li>
+          <li>Kafka、RocketMQ 等消息队列收发压测</li>
+          <li>阶梯加压、峰值冲击、浪涌、稳定性长跑等加压模型</li>
+          <li>施压节点一键注册、健康检查与弹性扩缩容</li>
+        </ul>
+      </div>
+      <div class="grid-2">
+        <div class="card"><h3>协议全覆盖</h3><p>从 Web 接口到底层中间件，一套平台完成全栈压测。</p></div>
+        <div class="card"><h3>多加压模型</h3><p>阶梯、浪涌、尖峰、长跑，匹配不同业务形态的流量画像。</p></div>
+        <div class="card"><h3>集群管理</h3><p>节点注册、健康检查、资源水位监控与弹性扩缩容。</p></div>
+        <div class="card"><h3>全链路支持</h3><p>配合链路标记与影子隔离方案，安全实施全链路压测。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 模块四：监控与报告 -->
+  <section class="section section-alt" id="monitor">
+    <div class="container split">
+      <div>
+        <span class="kicker">模块四</span>
+        <h2>实时监控与自动化报告</h2>
+        <p>压测过程中，业务指标与被压系统的资源指标同屏呈现；压测结束后，系统自动汇总数据生成报告，让"出报告"从半天缩短到三分钟。</p>
+        <ul class="check-list">
+          <li>TPS、吞吐量、响应时间（均值/分位值）、错误率秒级刷新</li>
+          <li>被压侧服务器 CPU、内存、磁盘 IO、网络带宽联动监控</li>
+          <li>阈值告警：指标越限即时通知，支持 webhook 对接企业IM</li>
+          <li>自动报告：测试结论、指标图表、瓶颈建议一键生成</li>
+          <li>历史趋势对比：同场景多轮压测容量基线沉淀</li>
+          <li>报告导出与归档，满足验收与审计留存要求</li>
+        </ul>
+      </div>
+      <div class="grid-2">
+        <div class="card"><h3>实时监控大屏</h3><p>压测过程全指标可视，问题出现的第一时间被看见。</p></div>
+        <div class="card"><h3>智能告警</h3><p>阈值告警与自定义规则，重要事件不漏报、不轰炸。</p></div>
+        <div class="card"><h3>自动报告</h3><p>从数据到结论自动成文，三分钟输出专业压测报告。</p></div>
+        <div class="card"><h3>基线对比</h3><p>多轮压测趋势对比，量化每次优化的性能收益。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 模块五：集成扩展 -->
+  <section class="section" id="integration">
+    <div class="container split">
+      <div>
+        <span class="kicker">模块五</span>
+        <h2>集成与扩展</h2>
+        <p>平台不是信息孤岛。开放 API 与插件机制让压测融入企业现有的研发流水线，协议扩展能力让平台跟随业务一起成长。</p>
+        <ul class="check-list">
+          <li>OpenAPI：任务创建、启动、状态查询、报告获取全接口开放</li>
+          <li>CI/CD 集成：Jenkins、GitLab CI 等流水线中自动触发性能门禁</li>
+          <li>插件化协议扩展：自定义协议 SDK，满足私有协议压测</li>
+          <li>数据对接：压测结果可推送至企业监控与数据平台</li>
+        </ul>
+      </div>
+      <div class="grid-2">
+        <div class="card"><h3>开放 API</h3><p>全能力接口开放，压测能力编排进企业自动化体系。</p></div>
+        <div class="card"><h3>DevOps 集成</h3><p>性能门禁进流水线，性能回归左移到每次提交。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 模块六：安全合规 -->
+  <section class="section section-alt" id="security">
+    <div class="container split">
+      <div>
+        <span class="kicker">模块六</span>
+        <h2>安全与合规</h2>
+        <p>压测平台掌握着企业核心系统的入口权限，安全设计贯穿产品始终；同时明确产品使用边界，坚守合规底线。</p>
+        <ul class="check-list">
+          <li>私有化部署：全组件可部署于企业内网，数据不外流</li>
+          <li>权限体系：基于角色的多级权限与操作审计日志</li>
+          <li>传输加密：控制通道与数据回传支持加密传输</li>
+          <li>使用合规：产品仅面向自有或已授权系统的性能测试</li>
+        </ul>
+      </div>
+      <div class="grid-2">
+        <div class="card"><h3>权限与审计</h3><p>多角色权限、操作留痕，满足企业内控与审计要求。</p></div>
+        <div class="card"><h3>数据安全</h3><p>私有化部署 + 传输加密，压测数据不出企业边界。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>想深入了解产品细节？</h2>
+          <p>申请 30 天全功能试用，或预约一次线上产品演示，我们的解决方案顾问为您 1 对 1 讲解。</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn" href="contact.html">预约演示</a>
+          <a class="btn btn-ghost" href="pricing.html">查看定价</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-brand brand">
+            <img class="brand-logo" src="assets/logo.png" alt="塔伸科技"> <span class="brand-text"><span class="brand-sub">上海塔伸科技有限公司</span>
+            </span>
+          </div>
+          <p>塔伸科技专注于服务器性能测试领域，自主研发的压力测试任务编排调度软件服务于电商、金融、游戏、政企等多行业客户，帮助企业以更低成本完成专业级容量评估与稳定性验证。</p>
+          <div class="compliance">
+            <b>合规声明：</b>本软件仅供对自有或已获得合法授权的系统进行性能测试使用，严禁将本软件用于任何未经授权的系统。使用本软件产生的一切行为由使用者自行承担法律责任。
+          </div>
+        </div>
+        <div>
+          <h4>产品</h4>
+          <ul>
+            <li><a href="product.html">功能总览</a></li>
+            <li><a href="product.html#orchestrate">任务编排</a></li>
+            <li><a href="product.html#schedule">调度引擎</a></li>
+            <li><a href="product.html#monitor">监控与报告</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>购买与支持</h4>
+          <ul>
+            <li><a href="pricing.html">定价方案</a></li>
+            <li><a href="order.html">在线下单</a></li>
+            <li><a href="contact.html">申请试用</a></li>
+            <li><a href="contact.html">联系商务</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>联系方式</h4>
+          <ul>
+            <li>地址：上海市徐汇区零陵路583号9楼</li>
+            <li>电话：18501750936</li>
+            <li>邮箱：1562779519@qq.com</li>
+            <li>工作时间：周一至周五 9:00–18:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footer-year">2026</span> 上海塔伸科技有限公司 版权所有</span>
+        <span><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备XXXXXXXX号-X（备案通过后请替换）</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1.1"></script>
+</body>
+</html>
