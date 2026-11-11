@@ -17,9 +17,9 @@
    ========================================================== */
 
 var PLANS = {
-  standard:   { name: '标准版',     desc: '适合中小型技术团队',           price: 19800, unit: '元/年',  period: '1年授权' },
-  professional: { name: '专业版',   desc: '适合中大型业务系统',           price: 49800, unit: '元/年',  period: '1年授权' },
-  enterprise: { name: '企业版',     desc: '不限节点 · 支持私有化部署',    price: 98800, unit: '元/年起', period: '1年授权' },
+  standard:   { name: '标准版',     desc: '适合中小型技术团队',           price: 1980, unit: '元/年',  period: '1年授权' },
+  professional: { name: '专业版',   desc: '适合中大型业务系统',           price: 5980, unit: '元/年',  period: '1年授权' },
+  enterprise: { name: '企业版',     desc: '不限节点 · 支持私有化部署',    price: 6980, unit: '元/年起', period: '1年授权' },
   service:    { name: '专家代测服务', desc: '专家团队按次提供压测服务',     price: 6000,  unit: '元/次起', period: '按项目评估' }
 };
 

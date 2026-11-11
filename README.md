@@ -35,7 +35,7 @@ python3 -m http.server 8080
 |---|---|---|
 | ICP 备案号 | `沪ICP备XXXXXXXX号-X` | 所有页面页脚（备案通过后填入） |
 | 对公账户信息 | `××银行上海××支行` / 账号 | js/order.js（对公转账部分） |
-| 套餐价格 | 19,800 / 49,800 / 98,800 / 6,000 | pricing.html、order.html、order.js 中 `PLANS` |
+| 套餐价格 | 1(体验) / 1,980 / 5,980 / 6,980 / 6,000(代测) | pricing.html、order.html、order.js 中 `PLANS` |
 | 发展历程 | 演示文案 | about.html |
 | 数据亮点 | 100+ 节点等 | index.html |
 
