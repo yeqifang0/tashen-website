@@ -30,7 +30,7 @@ https://yeqifang0.github.io/tashen-website/
 ## ② 替换页脚备案号
 
 拿到备案号后，全站 7 个页面页脚替换：
-搜索 `沪ICP备XXXXXXXX号-X（备案通过后请替换）` → `沪ICP备XXXXXXXX号-X`
+已完成：备案号为沪ICP备2026063426号-1（2026-11），已替换到全站 7 个页面页脚
 （链接已指向工信部 beian.miit.gov.cn，无需改动）
 
 ## ③ 部署网站到服务器
