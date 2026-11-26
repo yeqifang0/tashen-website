@@ -613,7 +613,7 @@ a:hover { color: var(--primary-dark); }
 .plan-option .p-price { font-size: 20px; font-weight: 700; color: var(--primary); }
 .plan-option .p-price small { font-size: 12.5px; color: var(--ink-3); font-weight: 400; }
 
-.pay-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pay-methods { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .pay-option {
   border: 2px solid var(--line);
   border-radius: 12px;
@@ -633,8 +633,7 @@ a:hover { color: var(--primary-dark); }
   display: flex; align-items: center; justify-content: center;
   font-weight: 700; font-size: 15px; color: #fff;
 }
-.pay-ico.wx { background: #09bb07; }
-.pay-ico.ali { background: #1677ff; }
+.pay-ico.qr { background: #0e9f6e; }
 .pay-ico.bank { background: #c27803; }
 .pay-option .pay-name { font-weight: 600; font-size: 15.5px; }
 .pay-option .pay-desc { font-size: 12.5px; color: var(--ink-3); }
@@ -647,15 +646,15 @@ a:hover { color: var(--primary-dark); }
   text-align: center;
   background: var(--bg-soft);
 }
-.qr-placeholder {
-  width: 180px; height: 180px;
+/* 收钱吧商户收款码（整卡展示） */
+.qr-real {
+  display: block;
+  width: 250px;
+  max-width: 100%;
+  height: auto;
   margin: 0 auto 16px;
-  border-radius: 10px;
-  background:
-    repeating-linear-gradient(0deg, #223350 0 10px, #fff 10px 20px),
-    repeating-linear-gradient(90deg, #223350 0 10px, #fff 10px 20px);
-  background-blend-mode: multiply;
-  opacity: 0.18;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(18, 38, 78, 0.14);
 }
 .qr-box .qr-tip { font-size: 14px; color: var(--ink-2); }
 

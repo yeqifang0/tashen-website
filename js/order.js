@@ -1,19 +1,23 @@
 /* ==========================================================
-   在线下单与支付流程（演示模式）
+   在线下单与支付流程
    ----------------------------------------------------------
-   说明：
-   1. 当前为纯前端演示：订单保存在浏览器 localStorage，
-      支付二维码为占位图，"模拟支付成功"仅用于演示流程。
-   2. 正式上线时需要接入真实支付，接入点已在本文件中
-      以【接入点】注释标出：
-      - 微信支付 Native（扫码支付）：后端调用微信支付 v3 API
-        生成 code_url，前端将 code_url 转成二维码展示；
-      - 支付宝当面付：后端调用 alipay.trade.precreate 生成 qr_code；
-      - 对公转账：保留人工确认收款流程即可。
-      建议增加一个简单后端（Node/Java/PHP 均可）负责：
-      创建订单、生成支付二维码、接收支付回调、更新订单状态。
-   3. 申请微信支付/支付宝商户号需要：营业执照、法人身份证、
-      已完成 ICP 备案的网站域名。
+   收款方式（真实收款，2026-11 起）：
+   1. 扫码支付：展示上海塔伸科技有限公司「收钱吧」聚合商户
+      收款码（assets/pay-qr.png）。微信、支付宝、云闪付等均可扫，
+      用户扫码后自行输入订单金额。静态码无支付回调，订单状态
+      由商务确认到账后人工跟进（页面提示用户保留支付凭证）。
+   2. 对公转账：建设银行对公账户（收款名称：上海塔伸科技有限公司；
+      开户银行：中国建设银行股份有限公司上海川沙支行；
+      账号：31050161413600006018；转账备注订单号）。
+   ----------------------------------------------------------
+   订单数据说明：网站当前无后端，订单保存在用户浏览器
+   localStorage，同一浏览器可通过"订单查询"查看；换设备时
+   页面引导用户联系商务热线人工核对。
+   ----------------------------------------------------------
+   后续升级（自动确认收款，可选）：接入收钱吧开放平台或
+   微信支付 Native v3 / 支付宝当面付 API（需营业执照 + 已
+   备案域名），由后端生成带订单金额的动态收款码、接收支付
+   回调并自动更新订单状态。展示层改造点以【接入点】注释标出。
    ========================================================== */
 
 var PLANS = {
@@ -32,9 +36,11 @@ var ORDER_KEY = 'tashen_orders';
   var state = {
     step: 1,
     plan: 'standard',
-    payment: 'wxpay',
+    payment: 'qr',
     order: null
   };
+
+  var PAY_NAMES = { qr: '扫码支付（微信/支付宝等）', bank: '对公转账' };
 
   // 从 URL 参数读取预选套餐（pricing.html 的"立即购买"跳转）
   var param = new URLSearchParams(location.search).get('plan');
@@ -77,27 +83,27 @@ var ORDER_KEY = 'tashen_orders';
     if (!box) return;
     if (state.step !== 3) { box.style.display = 'none'; return; }
     box.style.display = '';
+    var plan = PLANS[state.plan];
     if (state.payment === 'bank') {
       box.innerHTML = '' +
         '<div class="bank-info">' +
         '  <dl>' +
         '    <dt>收款名称</dt><dd>上海塔伸科技有限公司</dd>' +
-        '    <dt>开户银行</dt><dd>××银行上海××支行（正式上线前请替换为实际开户行）</dd>' +
-        '    <dt>银行账号</dt><dd>×××× ×××× ×××× ××××（请替换为实际账号）</dd>' +
+        '    <dt>开户银行</dt><dd>中国建设银行股份有限公司上海川沙支行</dd>' +
+        '    <dt>银行账号</dt><dd>31050161413600006018</dd>' +
         '    <dt>转账备注</dt><dd>请备注订单号，方便财务对账确认</dd>' +
         '  </dl>' +
         '</div>' +
-        '<div class="notice">对公转账后，请将转账凭证发送至 1562779519@qq.com，' +
-        '或联系商务顾问确认。财务确认到账后（一般 1 个工作日内）订单状态将更新为"已支付"。</div>';
+        '<div class="notice">对公转账后，请将转账凭证发送至 1562779519@qq.com 或致电商务顾问 18501750936 确认。' +
+        '财务确认到账后（一般 1 个工作日内）订单状态将更新为"已支付"。</div>';
     } else {
-      var name = state.payment === 'wxpay' ? '微信支付' : '支付宝';
-      var tip = state.payment === 'wxpay' ? '请使用微信"扫一扫"完成支付' : '请使用支付宝"扫一扫"完成支付';
       box.innerHTML = '' +
         '<div class="qr-box">' +
-        '  <div class="qr-placeholder"></div>' +
-        '  <div class="qr-tip"><b>' + tip + '</b></div>' +
-        '  <div class="qr-tip" style="margin-top:8px;color:#7a8494;">【演示模式】此处为二维码占位图。正式上线后，' +
-        '提交订单时后端会调用' + name + '接口生成真实支付二维码，支付结果由支付平台异步回调自动更新。</div>' +
+        '  <img class="qr-real" src="assets/pay-qr.png" alt="上海塔伸科技有限公司收款二维码">' +
+        '  <div class="qr-tip"><b>请使用微信、支付宝或云闪付"扫一扫"完成支付</b></div>' +
+        '  <div class="qr-tip" style="margin-top:8px;color:#7a8494;">收款方：上海塔伸科技有限公司。' +
+        '扫码后请在支付页面输入订单金额 <b style="color:var(--accent);">¥ ' + plan.price.toLocaleString() + '</b>，' +
+        '支付完成请保留支付凭证。</div>' +
         '</div>';
     }
   }
@@ -108,7 +114,7 @@ var ORDER_KEY = 'tashen_orders';
     if (!s) return;
     s.textContent = plan.name + '（' + plan.desc + '）';
     $('#summary-amount').textContent = '¥ ' + plan.price.toLocaleString() + ' ' + plan.unit;
-    var payName = { wxpay: '微信支付', alipay: '支付宝', bank: '对公转账' }[state.payment];
+    var payName = PAY_NAMES[state.payment];
     if ($('#summary-pay')) $('#summary-pay').textContent = state.step >= 3 ? payName : '—';
   }
 
@@ -168,8 +174,9 @@ var ORDER_KEY = 'tashen_orders';
   $('#back-3').addEventListener('click', function () { state.step = 2; render(); });
 
   // 提交订单
-  // 【接入点】正式上线：此处应改为调用后端创建订单接口（POST /api/orders），
-  // 由后端返回真实订单号与支付二维码链接；当前为演示，本地生成订单号。
+  // 【接入点】接入收钱吧/微信/支付宝 API 时：此处应改为调用后端创建订单接口
+  // （POST /api/orders），由后端返回订单号并生成带金额的动态收款码；
+  // 当前为静态收款码模式，订单号在浏览器本地生成。
   $('#submit-order').addEventListener('click', function () {
     var plan = PLANS[state.plan];
     var orderNo = 'TS' + nowStamp() + '-' + rand4();
@@ -180,14 +187,13 @@ var ORDER_KEY = 'tashen_orders';
       amount: plan.price,
       unit: plan.unit,
       payment: state.payment,
-      payName: { wxpay: '微信支付', alipay: '支付宝', bank: '对公转账' }[state.payment],
+      payName: PAY_NAMES[state.payment],
       company: val('f-company'),
       contact: val('f-name'),
       phone: val('f-phone'),
       email: val('f-email'),
       note: val('f-note'),
       status: '待支付',
-      demo: true,
       createdAt: new Date().toISOString()
     };
     saveOrder(state.order);
@@ -199,12 +205,12 @@ var ORDER_KEY = 'tashen_orders';
 
   function showResult() {
     var o = state.order;
-    var payArea = o.payment === 'bank' ? 'bank' : 'qr';
+    var isBank = o.payment === 'bank';
     var html = '' +
       '<div class="result-panel form-card">' +
-      '  <div class="result-icon pending" id="result-icon">⏳</div>' +
-      '  <h2>订单提交成功，等待支付</h2>' +
-      '  <div class="status-tag pending" id="result-status">状态：待支付</div>' +
+      '  <div class="result-icon pending">⏳</div>' +
+      '  <h2>订单提交成功！</h2>' +
+      '  <div class="status-tag pending">状态：待支付</div>' +
       '  <div class="order-summary" style="text-align:left;margin-top:8px;">' +
       '    <dl>' +
       '      <dt>订单编号</dt><dd id="r-no"></dd>' +
@@ -214,23 +220,31 @@ var ORDER_KEY = 'tashen_orders';
       '      <dt>联系信息</dt><dd id="r-contact"></dd>' +
       '    </dl>' +
       '  </div>';
-    if (payArea === 'qr') {
+    if (!isBank) {
       html += '' +
         '  <div class="qr-box" style="margin-top:22px;">' +
-        '    <div class="qr-placeholder"></div>' +
-        '    <div class="qr-tip">请使用' + o.payName + '扫码完成支付（演示环境二维码不可用）</div>' +
-        '  </div>' +
-        '  <button class="btn btn-primary" id="mock-pay" style="margin-top:18px;">模拟支付成功（仅演示）</button>';
+        '    <img class="qr-real" src="assets/pay-qr.png" alt="上海塔伸科技有限公司收款二维码">' +
+        '    <div class="qr-tip"><b>请使用微信、支付宝或云闪付扫码完成支付</b></div>' +
+        '    <div class="qr-tip" style="margin-top:6px;color:#7a8494;">扫码后请在支付页面输入订单金额 ¥ ' + o.amount.toLocaleString() + '，' +
+        '支付完成请保留支付凭证，方便商务核对。</div>' +
+        '  </div>';
     } else {
       html += '' +
-        '  <div class="notice" style="text-align:left;">已选择对公转账：请向"上海塔伸科技有限公司"账户转账并备注订单号，' +
-        '财务确认到账后订单自动转为"已支付"。（开户行与账号信息请在上一步查看，正式上线前请替换）</div>' +
-        '  <button class="btn btn-primary" id="mock-pay" style="margin-top:18px;">模拟财务确认到账（仅演示）</button>';
+        '  <div class="bank-info" style="margin-top:22px;text-align:left;">' +
+        '    <dl>' +
+        '      <dt>收款名称</dt><dd>上海塔伸科技有限公司</dd>' +
+        '      <dt>开户银行</dt><dd>中国建设银行股份有限公司上海川沙支行</dd>' +
+        '      <dt>银行账号</dt><dd>31050161413600006018</dd>' +
+        '      <dt>转账备注</dt><dd>请备注订单号：' + o.orderNo + '</dd>' +
+        '    </dl>' +
+        '  </div>' +
+        '  <div class="notice" style="text-align:left;margin-top:16px;">已选择对公转账：请向上述账户转账并备注订单号。' +
+        '转账后请将凭证发送至 1562779519@qq.com 或致电 18501750936，财务确认到账后订单转为"已支付"。</div>';
     }
     html += '' +
       '  <div class="notice blue" style="text-align:left;">' +
-      '    <b>商务咨询：</b>下单后我们的商务顾问将在 1 个工作日内与您电话联系，确认合同、发票与交付事宜。' +
-      '    演示提示：当前网站为纯前端演示环境，订单数据仅保存在您的浏览器本地。' +
+      '    <b>下一步：</b>支付完成后，我们的商务将在 1 个工作日内与您电话联系，确认合同、发票与交付事宜。' +
+      '    订单信息保存在本机浏览器中，如需人工查询订单请联系商务热线 18501750936。' +
       '  </div>' +
       '  <p style="margin-top:16px;"><a href="index.html">返回首页</a> · <a href="pricing.html">查看其他套餐</a></p>' +
       '</div>';
@@ -242,24 +256,6 @@ var ORDER_KEY = 'tashen_orders';
     $('#r-amount').textContent = '¥ ' + o.amount.toLocaleString() + ' ' + o.unit;
     $('#r-pay').textContent = o.payName;
     $('#r-contact').textContent = o.company + ' · ' + o.contact + ' · ' + o.phone;
-
-    $('#mock-pay').addEventListener('click', function () {
-      // 【接入点】正式上线：真实支付由支付平台异步回调后端更新状态，
-      // 前端轮询订单接口刷新状态；此处仅为演示按钮。
-      o.status = '已支付';
-      saveOrder(o);
-      var icon = $('#result-icon');
-      icon.className = 'result-icon';
-      icon.textContent = '✓';
-      $('h2') && null;
-      $('#result-status').className = 'status-tag paid';
-      $('#result-status').textContent = '状态：已支付（演示）';
-      $('#mock-pay').disabled = true;
-      $('#mock-pay').textContent = '支付已完成';
-      // 标题仅提示一次
-      var h = wrap.querySelector('h2');
-      if (h) h.textContent = '支付成功，感谢订购！';
-    });
   }
 
   // 订单查询（演示）
@@ -272,7 +268,7 @@ var ORDER_KEY = 'tashen_orders';
       var found = orders.filter(function (o) { return o.orderNo === no; })[0];
       if (!found) {
         box.innerHTML = '<div class="notice" style="margin-top:16px;">未找到该订单。请确认订单编号是否正确' +
-          '（演示环境的订单仅保存在当前浏览器中）。</div>';
+          '（订单信息保存在下单时所用的浏览器中），或致电商务热线 18501750936 人工查询。</div>';
         return;
       }
       box.innerHTML = '<div class="order-summary" style="margin-top:16px;text-align:left;">' +
