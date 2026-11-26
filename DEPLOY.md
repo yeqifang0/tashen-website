@@ -1,4 +1,17 @@
 # shtashen.cn 上线部署手册
+# ✅ 部署已完成（2026-11-26）
+
+**线上地址：https://shtashen.cn** （https://www.shtashen.cn 同步生效）
+
+- 备案：沪ICP备2026063426号-1（已替换到全站页脚）
+- 服务器：阿里云上海 47.103.190.201，nginx 1.24
+- HTTPS：Let's Encrypt 证书（有效期至 2027-02-24，certbot 自动续期已配置）
+- HTTP 全站 301 跳转 HTTPS
+- 同服务器 shmenglu.com 站点不受影响
+- nginx 改动前的原配置备份：服务器上 /etc/nginx/nginx.conf.bak-tashen 与 .bak-https
+
+以下为原始部署手册，供后续维护参考：
+
 
 把本仓库网站部署到阿里云服务器（上海）并绑定域名 shtashen.cn 的完整流程。
 
